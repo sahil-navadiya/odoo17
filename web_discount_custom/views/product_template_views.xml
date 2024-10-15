@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <!-- Inherit the product template form view -->
+        <record id="view_product_template_form_discount" model="ir.ui.view">
+            <field name="name">product.template.form.discount</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Adding the discount fields after the sales price field -->
+                <xpath expr="//field[@name='taxes_id']" position="before">
+                	<field name="price_sale_custom" string="Price"/>
+                    <field name="discount_percentage" string="Discount Percentage(%)"/>
+                      
+                </xpath>
+                <xpath expr="//field[@name='list_price']" position="attributes">
+                	 <attribute name="readonly">1</attribute>
+                </xpath>
+               
+               
+            </field>
+        </record>
+    </data>
+</odoo>
